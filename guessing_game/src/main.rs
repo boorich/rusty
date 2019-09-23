@@ -13,8 +13,9 @@ fn main() {
     // is one that is local to the current thread of execution and seeded by the OS
     // then call gen_range which is defined by Rng trait from import
     let secret_number = rand::thread_rng().gen_range(1, 101);
-
-    println!("The secret number is: {}", secret_number);
+    
+    //for testing the game
+    //println!("The secret number is: {}", secret_number);
 
     loop  {
         println!("Please input your guess.");
