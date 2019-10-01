@@ -1,14 +1,16 @@
+// passing a variable to a function will either move or copy
+
 fn main() {
-    let s = String::from("hello");  // s comes into scope
+    let s = String::from("hello");  // s comes into scope >> the :: namespaces this specific from function und the string type
 
     takes_ownership(s);             // s's value moves into the function...
-                                    // ... and so is no longer valid here
+    // println!("{}", s);           // ... and so is no longer valid here >> throws Caused by: process didn't exit successfully:
 
-    let x = 5;                      // x comes into scope
+    let x = 5;                      // x comes into scope >> directly on stack
 
     makes_copy(x);                  // x would move into the function,
                                     // but i32 is Copy, so it’s okay to still
-                                    // use x afterward
+    println!("From main: {}", x);  // use x afterward
 
 } // Here, x goes out of scope, then s. But because s's value was moved, nothing
   // special happens.
@@ -19,5 +21,5 @@ fn takes_ownership(some_string: String) { // some_string comes into scope
   // memory is freed.
 
 fn makes_copy(some_integer: i32) { // some_integer comes into scope
-    println!("{}", some_integer);
+    println!("From fn: {}", some_integer);
 } // Here, some_integer goes out of scope. Nothing special happens.
