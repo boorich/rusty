@@ -4,12 +4,19 @@
 fn main() {
 
     // instatiating a mutable user1
-    let mut user1 = User{ // mut can only be applied to entire struct, not individual fields
+    let mut user1 = User { // mut can only be applied to entire struct, not individual fields
         // in structs, unlike tuples, order does not matter. Work like a dictionaries.
         email: String::from (""),
         username: String::from(""),
         sign_in_count: 1,
         active: true,
+    };
+
+    let mut player1 = Player {
+        name: "Martin".to_string(),
+        age: 40,
+        height: 185,
+        shoesize: 43,
     };
 
     // some input to change the instance's value
@@ -26,13 +33,18 @@ fn main() {
     // regular print with {}
     println!("The username of User 1 from main()is: {}", user1.username);
 
+    // custom print with simple_print()
+    println!("The simple print of Player 1 is: {}", player1.simple_print()); // since simple_print takes &self as an argument it refers to player1
+    player1.grow(20);
+    println!("The simple print of grown Player 1 is: {}", player1.simple_print());
+    println!("The simple print of User 1 is: {}", user1.simple_print());
+
     let user2 = build_user(String::from("Doctor Love"), String::from("some@mail.com"));
     println!("*** Debug Print ***");
     println!("The User 2 struct from build_user() includes: {:#?}", user2);
     println!("The username of User 2 from build_user()is: {}", user2.username);
 
     // updating a struct with struct update syntax
-
     let user3 = User {
         email: String::from ("Inspector Gadget"),
         username: String::from("other@mail.com"),
@@ -46,6 +58,8 @@ fn main() {
     println!("*** Debug Print ***");
     println!("The tuple struct from main() includes: {},{},{}", tuple.0, tuple.1, tuple.2);
 
+    player1.die();
+    // player1.die(); not accisble here anymore since player1 was moved into player1.die()    
 }
 
 // a struct grouping user data to be instatiated
@@ -55,6 +69,34 @@ struct User {
     email: String,
     sign_in_count: u64,
     active: bool,
+}
+
+impl User {
+    fn simple_print(&self) -> String {
+        format! (" {} - {} - {} - {}", self.username, self.email, self.sign_in_count, self.active)
+    }
+}
+
+struct Player {
+    name: String,
+    age: i32,
+    height: i32,
+    shoesize: i32,
+}
+
+// everything that needs to be implemented onto the type of player goes here
+impl Player {
+    fn simple_print(&self) -> String {
+        format! ("{} - {} - {} cm - shoe: {}", self.name, self.age, self.height, self.shoesize)
+    }
+
+    fn grow (&mut self, h: i32) {
+        self.height += 20;
+    }
+
+    fn die (self) { // this actually consumes self and therefore destroys the calling struct
+        println!("{} is now dead !!!", self.simple_print());
+    }  
 }
 
 // function to instatiate users
