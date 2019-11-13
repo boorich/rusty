@@ -59,7 +59,7 @@ fn main() {
     println!("The tuple struct from main() includes: {},{},{}", tuple.0, tuple.1, tuple.2);
 
     player1.die();
-    // player1.die(); not accisble here anymore since player1 was moved into player1.die()    
+    // player1.die(); not accessible here anymore since player1 was moved into player1.die()    
 }
 
 // a struct grouping user data to be instatiated

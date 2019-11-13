@@ -1,16 +1,16 @@
 #[derive(Debug)]  // usually makes sense to add for printing stuff without implementing custom print functions
 struct Rectangle {
     width: u32,
-    heigth: u32,
+    height: u32,
 }
 
 impl Rectangle {
     fn area(&self) -> u32 {     // method
-    self.width * self.heigth / 2
+    self.width * self.height / 2
     }
 
     fn can_hold(&self, other: &Rectangle) -> bool {     // method
-    self.width > other.width && self.heigth > other.heigth
+    self.width > other.width && self.height > other.height
     }
 
     fn square(size: u32) -> Rectangle {     // associated function, doesn't take self parameter
@@ -19,8 +19,8 @@ impl Rectangle {
 }
 
 fn main() {
-    let rect = Rectangle {width: 30, heigth: 50};
-    let rect2 = Rectangle {width: 30, heigth: 50};
+    let rect = Rectangle {width: 30, height: 50};
+    let rect2 = Rectangle {width: 30, height: 50};
 
     // calling associated function square with :: syntax
     // something like this happens e.g. inside String::from("bla")

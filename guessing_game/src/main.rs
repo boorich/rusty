@@ -27,7 +27,7 @@ fn main() {
 
         // without importing std it could be std::io::stdin()
         // stdin() retuns an instance of std:io:Stdin which is a handle to the buffer of the standard input stream
-        // read_line is called and whatever is typed into the keyboard is written to guess strin we're passing read_line
+        // read_line is called and whatever is typed into the keyboard is written to guess string we're passing read_line
         // the & indicates that this is a reference to the memory so multiple parts of the code can access the same bytes
         io::stdin().read_line(&mut guess)
         // expect is used to check for potential failure

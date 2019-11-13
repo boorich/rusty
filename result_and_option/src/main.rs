@@ -1,5 +1,5 @@
 use std::collections::HashMap;
-use std::env::args; //function that returns an iteroatio over the args that were supplied
+use std::env::args; //function that returns an iterator over the args that were supplied
 
 fn main() {
 

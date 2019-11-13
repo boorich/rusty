@@ -3,6 +3,7 @@ fn main() {
 
     another_function(5, 6);
     express();
+    multi();
     println!("The value of x is: {}", five());
 
 }
@@ -28,6 +29,13 @@ fn express() {
 fn five() -> i32 {
     // implicitly returns value of last expression in block 
     5
+}
+
+// return type specified as i32
+fn multi() {
+    // implicitly returns value of last expression in block 
+    let g = (-5) * 5;
+    println!("The value of g is: {}", g);
 }
 
 // about the ;
