@@ -54,7 +54,7 @@ mod tests {
         let g = GBP(200);
         let ex = Ex{cad:0.7, gbp:1.3};
         // let c = ex.from_uv(ex.to_uv(g));
-        let c = ex.convert(g);
+        let c:CAD = ex.convert(g); // currently there is only CAD implemented, so it would infer that 
         assert_eq!(c, CAD(371));
     }
 }
